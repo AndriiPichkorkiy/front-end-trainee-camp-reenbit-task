@@ -1,11 +1,10 @@
 import CardItem from "./CardItem";
 
-const CardList = ({ characters }) => {
+const CardList = ({ characters, from }) => {
   return (
-    <>
-      CardList
-      <CardItem />
-    </>
+    <ul>
+      {characters.map(char => <CardItem char={char} key={char.id} from={from} />)}
+    </ul>
   );
 }
 
