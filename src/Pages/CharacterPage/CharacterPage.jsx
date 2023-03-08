@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { personsApi } from "../Api/personsApi";
+import { personsApi } from "../../Api/personsApi";
+import { AvatarContainer, BackButton, CharTitle, InfoItem, InfoList, InfoTitle, PageContainer } from "./CharacterPage.styled";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const CharacterPage = ({ char: propChar }) => {
   const { id } = useParams()
@@ -24,28 +26,32 @@ const CharacterPage = ({ char: propChar }) => {
   }, [])
 
   if (isLoading) return <p>loading...</p>
-  console.log('char', char)
+
   const { name, image: src, gender, status, species, origin: { name: origin } } = char
 
   function goBack() {
     const way = location.state?.from || "/";
-    navigate(way, { replace: false });
+    // navigate(way, { replace: true });
+    navigate(-1, { replace: false });
   }
 
   return (
-    <>
-      <button onClick={goBack}>go back</button>
-      <img src={src} alt="avatar" />
-      <h1>{name}</h1>
+    <PageContainer>
+      <BackButton onClick={goBack}> <ArrowBackIcon style={{ "margin-right": "12px" }} size={16} /> Go back</BackButton>
+      <AvatarContainer>
+        <img src={src} alt="avatar" />
+      </AvatarContainer>
 
-      <h2>Informations</h2>
-      <ul>
-        <li>gender : {gender}</li>
-        <li>status : {status}</li>
-        <li>species : {species}</li>
-        <li>origin : {origin}</li>
-      </ul>
-    </>
+      <CharTitle>{name}</CharTitle>
+
+      <InfoTitle>Informations</InfoTitle>
+      <InfoList>
+        <InfoItem>gender : {gender}</InfoItem>
+        <InfoItem>status : {status}</InfoItem>
+        <InfoItem>species : {species}</InfoItem>
+        <InfoItem>origin : {origin}</InfoItem>
+      </InfoList>
+    </PageContainer>
 
   );
 }

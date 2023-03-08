@@ -1,18 +1,22 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Card, CardTitle, CardSubTitle, CardImageWrapper, CardTitleContainer } from "./Card.styled";
 
 const CardItem = ({ char, from }) => {
   const { name, species, image: src } = char
-  // const navigate = useNavigate()
-  // const openCard = () => {
-  //   navigate('/character/' + char.id)
-  // }
   return (
-    <li>
-      <Link to={'/character/' + char.id} state={{ from }}>Link</Link>
-      <p>name: {name}</p>
-      <p>species: {species}</p>
-      <img src={src} alt="an avatar" />
-    </li>
+    <Card>
+      <Link to={'/character/' + char.id} state={{ from }}>
+        <CardImageWrapper>
+          <img src={src} alt="an avatar" />
+        </CardImageWrapper>
+      </Link>
+      <CardTitleContainer>
+        <CardTitle>{name}</CardTitle>
+        <CardSubTitle>{species}</CardSubTitle>
+      </CardTitleContainer>
+
+
+    </Card>
   );
 }
 
