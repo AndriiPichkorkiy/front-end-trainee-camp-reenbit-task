@@ -36,6 +36,11 @@ body,
   /* width: 100vw; */
 }
 
+#root {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
 img {
   height: 100%;
   width: 100%;

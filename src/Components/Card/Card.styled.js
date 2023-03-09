@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { respondTo } from "../../helpers/respondTo.js";
 
 export const CardListContainer = styled.ul`
   display: flex;
@@ -16,6 +17,10 @@ export const CardListContainer = styled.ul`
 export const Card = styled.li`
   width: 240px;
   height: 240px;
+  ${respondTo.xs`
+    width: 100%;
+    height: 100%;
+  `}
   /* margin: 4px; */
 
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),

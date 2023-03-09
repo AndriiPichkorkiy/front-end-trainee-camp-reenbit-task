@@ -10,7 +10,7 @@ export const PageContainer = styled.div`
 
 export const Hero = styled.div`
   margin: 0 auto;
-  width: 600px;
+  max-width: 600px;
   height: 200px;
 
   &:hover {
@@ -19,6 +19,7 @@ export const Hero = styled.div`
 `;
 export const HeroImage = styled.img`
   height: 100%;
+  object-fit: contain;
 `;
 export const SearchSection = styled.div`
   margin-top: 16px;
