@@ -10,7 +10,7 @@ const CharacterPage = ({ char: propChar }) => {
   const { id } = useParams()
   const [isLoading, setIsLoading] = useState(true)
 
-  const [char, setChar] = useState(null)
+  const [char, setChar] = useState({})
 
 
   useEffect(() => {
@@ -26,7 +26,6 @@ const CharacterPage = ({ char: propChar }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  if (isLoading) return <p>loading...</p>
 
   const {
     name = "unknow",

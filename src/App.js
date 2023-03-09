@@ -12,7 +12,7 @@ function App() {
   }, [pathname]);
   return (
     <>
-      <NavRoutes />;
+      <NavRoutes />
       <NotificationContainer />
     </>
   );

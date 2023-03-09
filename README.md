@@ -2,7 +2,7 @@
 
 This is an app that allows search characters from cartoon "Rick and Morty"
 <br />
-Link deployed app: "in progress..."
+Link deployed app: https://6409e5a2b7fe610af079425f--lustrous-crepe-451fb9.netlify.app/
 
 ## Features
 
