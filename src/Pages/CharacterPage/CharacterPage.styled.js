@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { H1Title, H2Title } from "../../Components/Common/Common.styled";
 
 export const PageContainer = styled.div`
   overflow: hidden;
@@ -7,31 +8,9 @@ export const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  height: 100%;
-  width: 100%;
-  /* padding-top: 76px; */
-`;
-
-export const BackButton = styled.button`
-  display: flex;
-  justify-content: center;
-  font-family: "Karla";
-  font-weight: 700;
-  font-size: 18px;
-  line-height: calc(21px / 18px);
-
-  position: absolute;
-  top: 21px;
-  left: 50px;
-  background: none;
-  border: none;
-
-  cursor: pointer;
-
-  transition-property: transform;
-  &:hover {
-    transform: scale(1.1);
-  }
+  width: 320px;
+  margin: 0 auto;
+  padding-top: 76px;
 `;
 
 export const AvatarContainer = styled.div`
@@ -42,37 +21,20 @@ export const AvatarContainer = styled.div`
   overflow: hidden;
 `;
 
-export const CharTitle = styled.h1`
+export const CharTitle = styled(H1Title)`
   margin-top: 16px;
   margin-bottom: 0;
-  font-family: "Roboto";
-  font-weight: 400;
-  font-size: 48px;
-  /* line-height: 1.1667%; */
-
-  /* text-align: center; */
-
-  color: #081f32;
 `;
 
-export const InfoTitle = styled.h2`
+export const InfoTitle = styled(H2Title)`
   margin-top: 48px;
   margin-bottom: 0;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 120%;
-
-  letter-spacing: 0.15px;
-
-  /* Graybase / Gray 1 */
-  color: #8e8e93;
 `;
 
 export const InfoList = styled.ul`
   margin-top: 48px;
-  max-width: 412px;
+  /* max-width: 412px; */
+  width: 100%;
 `;
 
 export const InfoItem = styled.li`

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { NotificationManager } from "react-notifications";
 
 const BASE_URL = "https://rickandmortyapi.com/api";
 
@@ -18,8 +19,13 @@ export const personsApi = {
     return response.data;
   },
   getFiltredCharacters: async function (params) {
-    const url = "character/";
-    const response = await instance.get(url, { params });
-    return response.data;
+    try {
+      const url = "character/";
+      const response = await instance.get(url, { params });
+      return response.data;
+    } catch (error) {
+      NotificationManager.warning(error.response.data.error, "", 5000);
+      return null;
+    }
   },
 };

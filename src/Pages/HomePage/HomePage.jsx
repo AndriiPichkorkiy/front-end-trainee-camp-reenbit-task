@@ -3,9 +3,10 @@ import { Link, useSearchParams } from "react-router-dom";
 import { personsApi } from "../../Api/personsApi";
 import CardList from "../../Components/Card/CardList";
 import SearchField from "../../Components/SearchField/SearchField";
-import { Hero, HeroImage, PageContainer, SearchSection, CardSection } from "./HomePage.styled";
+import { Hero, HeroImage, PageContainer, SearchSection, CardSection, SearchHint } from "./HomePage.styled";
 import heroImg from '../../assest/heroImg.png'
 import { sortArrByName } from "../../helpers/sortArrByName";
+import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 
 const HomePage = () => {
   const [characters, setCharacters] = useState([])
@@ -31,7 +32,8 @@ const HomePage = () => {
   const getOnlyCharacterByName = async () => {
     setIsLoading(true)
     const data = await personsApi.getFiltredCharacters({ name: query })
-    setCharacters(sortArrByName(data.results))
+    if (!data) setCharacters([])
+    else setCharacters(sortArrByName(data.results))
     setIsLoading(false)
   }
 
@@ -62,11 +64,18 @@ const HomePage = () => {
       </Hero>
       <SearchSection>
         <SearchField callback={onChangeInput} value={query} />
+        <SearchHint>{query && (query.length < 3)
+          ? "At least 3 symbols"
+          : null}
+        </SearchHint>
       </SearchSection>
-      <CardSection>
-        <CardList characters={characters} from={from} />
-      </CardSection>
-
+      {isLoading
+        ? <LoadingSpinner />
+        :
+        <CardSection>
+          <CardList characters={characters} from={from} />
+        </CardSection>
+      }
     </PageContainer>
   );
 }

@@ -50,3 +50,20 @@ ul {
 li {
   list-style: none;
 }
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+/* loading */
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

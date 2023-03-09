@@ -22,7 +22,12 @@ export const HeroImage = styled.img`
 `;
 export const SearchSection = styled.div`
   margin-top: 16px;
+  position: relative;
+`;
+export const SearchHint = styled.div`
+  /* top: -20px; */
+  position: absolute;
 `;
 export const CardSection = styled.div`
-  margin-top: 16px;
+  margin-top: 24px;
 `;

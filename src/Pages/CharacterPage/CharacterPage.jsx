@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { personsApi } from "../../Api/personsApi";
-import { AvatarContainer, BackButton, CharTitle, InfoItem, InfoList, InfoTitle, PageContainer } from "./CharacterPage.styled";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import BackButton from "../../Components/BackButton/BackButton";
+import { H3Title, H4Title } from "../../Components/Common/Common.styled";
+import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
+import { AvatarContainer, CharTitle, InfoItem, InfoList, InfoTitle, PageContainer } from "./CharacterPage.styled";
 
 const CharacterPage = ({ char: propChar }) => {
   const { id } = useParams()
   const [isLoading, setIsLoading] = useState(true)
-  const navigate = useNavigate();
+
   const [char, setChar] = useState(null)
-  const location = useLocation();
+
 
   useEffect(() => {
     if (propChar) {
-      console.log('propChar', propChar)
       setChar(char)
       setIsLoading(false)
     } else {
@@ -27,30 +28,55 @@ const CharacterPage = ({ char: propChar }) => {
 
   if (isLoading) return <p>loading...</p>
 
-  const { name, image: src, gender, status, species, origin: { name: origin } } = char
-
-  function goBack() {
-    const way = location.state?.from || "/";
-    // navigate(way, { replace: true });
-    navigate(-1, { replace: false });
-  }
+  const {
+    name = "unknow",
+    image: src,
+    gender = "unknow",
+    status = "unknow",
+    species = "unknow",
+    origin: { name: origin } = "unknow",
+    type = "unknow"
+  } = char
 
   return (
     <PageContainer>
-      <BackButton onClick={goBack}> <ArrowBackIcon style={{ "margin-right": "12px" }} size={16} /> Go back</BackButton>
-      <AvatarContainer>
-        <img src={src} alt="avatar" />
-      </AvatarContainer>
+      <BackButton />
+      {isLoading
+        ? <LoadingSpinner />
+        : <>
+          <AvatarContainer>
+            <img src={src} alt="avatar" />
+          </AvatarContainer>
 
-      <CharTitle>{name}</CharTitle>
+          <CharTitle>{name}</CharTitle>
 
-      <InfoTitle>Informations</InfoTitle>
-      <InfoList>
-        <InfoItem>gender : {gender}</InfoItem>
-        <InfoItem>status : {status}</InfoItem>
-        <InfoItem>species : {species}</InfoItem>
-        <InfoItem>origin : {origin}</InfoItem>
-      </InfoList>
+          <InfoTitle>Informations</InfoTitle>
+          <InfoList>
+            <InfoItem>
+              <H3Title>Gender:</H3Title>
+              <H4Title>{gender}</H4Title>
+            </InfoItem>
+            <InfoItem>
+              <H3Title>Status:</H3Title>
+              <H4Title>{status}</H4Title>
+            </InfoItem>
+            <InfoItem>
+              <H3Title>Species:</H3Title>
+              <H4Title>{species}</H4Title>
+            </InfoItem>
+            <InfoItem>
+              <H3Title>Origin:</H3Title>
+              <H4Title>{origin}</H4Title>
+            </InfoItem>
+            <InfoItem>
+              <H3Title>Type:</H3Title>
+              <H4Title>{type || "unknow"}</H4Title>
+            </InfoItem>
+          </InfoList>
+        </>
+
+      }
+
     </PageContainer>
 
   );
