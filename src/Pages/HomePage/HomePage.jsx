@@ -50,11 +50,13 @@ const HomePage = () => {
     }
 
     getAllСharacter();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     if (query.length < 3) return
     getOnlyCharacterByName()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query])
 
   return (
