@@ -2,7 +2,7 @@
 
 This is an app that allows search characters from cartoon "Rick and Morty"
 <br />
-Link deployed app: https://6409e5a2b7fe610af079425f--lustrous-crepe-451fb9.netlify.app/
+Link deployed app: https://lustrous-crepe-451fb9.netlify.app/
 
 ## Features
 
@@ -28,8 +28,3 @@ Link deployed app: https://6409e5a2b7fe610af079425f--lustrous-crepe-451fb9.netli
 
 - **`$ npm start`** to run server
 
-## NOTE
-
-- You can change database connection in **`./app.js`**
-- Config PeerServer in **`./client/src/components/Room.jsx`**
-- Config host to localhost in **`./client/src/api/index.js`**
